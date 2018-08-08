@@ -10,6 +10,7 @@
         <li class="menu-header"><strong>L`XSS-FRONTEND</strong></li>
         <el-menu-item index="/">encode/decode</el-menu-item>
         <el-menu-item index="/probe">probe</el-menu-item>
+        <el-menu-item index="/json">json</el-menu-item>
         <el-menu-item index="/about">about</el-menu-item>
     </el-menu>
 </div>
