@@ -52,6 +52,12 @@
         </el-row>
         <el-row>
           <el-button-group>
+              <el-button class='action' size="medium" v-on:click="HTMLencode">HTML实体编码</el-button>
+              <el-button class='action' size="medium" v-on:click="HTMLdecode">HTML实体解码</el-button>
+          </el-button-group>
+        </el-row>
+        <el-row>
+          <el-button-group>
               <el-button class='action' size="medium" v-on:click="stringcharcode">String.FromChar En</el-button>
               <el-button class='action' size="medium" v-on:click="stringcharcodedecode">String.FromChar De</el-button>
           </el-button-group>
@@ -330,6 +336,26 @@ export default {
     unicodedecode () {
       this.lastAction = this.unicodedecode
       let result = this.text.input.replace(/\\u([a-fA-F0-9]{4})/g, (match, i) => String.fromCharCode(parseInt(i, 16)))
+      this.output(result)
+    },
+    HTMLencode () {
+      this.lastAction = this.HTMLencode
+      let result = this.text.input
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+      this.output(result)
+    },
+    HTMLdecode () {
+      this.lastAction = this.HTMLencode
+      let result = this.text.input
+            .replace(/&amp;/g, "&")
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'");
       this.output(result)
     },
     stringcharcode () {
